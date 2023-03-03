@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Practica3</string>
+    <string name="alta">Alta</string>
+    <string name="ver">Ver</string>
+    <string name="salir">Salir</string>
+    <string name="nombre">Nombre</string>
+    <string name="email">Email</string>
+    <string name="fecha">yyyy-MM-dd</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="preguntaProfesor">¿Es profesor?</string>
+    <string name="asignaturas">Seleccione sus asignaturas</string>
+    <string name="matematicas">Matemáticas</string>
+    <string name="lengua">Lengua</string>
+    <string name="fisica">Fisica</string>
+    <string name="genero">Seleccione su genero</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="otro">Otro</string>
+    <string name="n_a">Prefiero no decirlo</string>
+    <string name="comodin1">Comodin1</string>
+    <string name="comodin2">Comodin2</string>
+    <string name="comodin3">Comodin3</string>
+    <string name="verfecha">Nacimiento</string>
+    <string name="verAsignaturas">Asignaturas</string>
+    <string name="verGenero">Genero</string>
+</resources>
