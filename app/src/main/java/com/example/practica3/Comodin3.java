@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import com.example.practica3.entidades.Usuario;
+
+import java.io.Serializable;
+
 public class Comodin3 extends AppCompatActivity {
 
     RadioButton rb1, rb2, rb3, rb4;
@@ -23,6 +27,9 @@ public class Comodin3 extends AppCompatActivity {
         rb3 = findViewById(R.id.rb3);
         rb4 = findViewById(R.id.rb4);
         btn1 = findViewById(R.id.btn1);
+
+        Usuario usu;
+        usu = (Usuario) getIntent().getSerializableExtra("objeto");
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +54,8 @@ public class Comodin3 extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(Comodin3.this, MainActivity.class);
-                intent.putExtra("genero", genero);
+                usu.setGenero(genero);
+                intent.putExtra("objeto", (Serializable) usu);
                 startActivity(intent);
             }
         });

@@ -1,8 +1,9 @@
 package com.example.practica3.entidades;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Usuario{
+public class Usuario implements Serializable {
     String nombre;
     String fechaNac;
     String email;

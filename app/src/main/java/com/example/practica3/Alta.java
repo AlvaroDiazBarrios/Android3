@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.practica3.entidades.Usuario;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -29,6 +30,9 @@ public class Alta extends AppCompatActivity {
         txtFecha = findViewById(R.id.txtFecha);
         btn1 = findViewById(R.id.btn1);
 
+        Usuario usu;
+        usu = (Usuario) getIntent().getSerializableExtra("objeto");
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,9 +44,10 @@ public class Alta extends AppCompatActivity {
 
                 if(!nombre.equals("") && !email.equals("") && !fecha.equals("")){
                     Intent intent = new Intent(Alta.this, MainActivity.class);
-                    intent.putExtra("nombre", nombre);
-                    intent.putExtra("email", email);
-                    intent.putExtra("fecha", fecha);
+                    usu.setNombre(nombre);
+                    usu.setEmail(email);
+                    usu.setFechaNac(fecha);
+                    intent.putExtra("objeto", (Serializable) usu);
                     startActivity(intent);
                 } else{
                     Toast.makeText(Alta.this, "No deje ningun campo vacío", Toast.LENGTH_LONG).show();

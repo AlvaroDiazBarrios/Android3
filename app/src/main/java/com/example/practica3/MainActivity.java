@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.practica3.entidades.Usuario;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Usuario usuario = new Usuario();
 
     Button btn1, btn2, btn3, btn4, btn5, btn6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +30,21 @@ public class MainActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.btn4);
         btn5 = findViewById(R.id.btn5);
         btn6 = findViewById(R.id.btn6);
+        Usuario usu;
+
+        if(getIntent().getSerializableExtra("objeto") != null){
+            usu = (Usuario) getIntent().getSerializableExtra("objeto");
+        } else {
+            usu = new Usuario();
+        }
+
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Alta.class);
+                intent.putExtra("objeto", (Serializable) usu);
                 startActivity(intent);
             }
         });
@@ -40,21 +52,9 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(MainActivity.this, Ver.class);
-                intent.putExtra("nombre", usuario.getNombre());
-                intent.putExtra("email", usuario.getEmail());
-                intent.putExtra("fecha", usuario.getFechaNac());
-                intent.putExtra("profesor", usuario.isProfesor());
-                intent.putExtra("asignatura", usuario.getAsignaturas());
-                intent.putExtra("genero", usuario.getGenero());
-                startActivity(intent);*/
-
-                System.out.println(usuario.getNombre());
-                System.out.println(usuario.getEmail());
-                System.out.println(usuario.getFechaNac());
-                System.out.println(usuario.isProfesor());
-                System.out.println(usuario.getAsignaturas());
-                System.out.println(usuario.getGenero());
+                Intent intent = new Intent(MainActivity.this, Ver.class);
+                intent.putExtra("objeto", (Serializable) usu);
+                startActivity(intent);
             }
         });
 
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Comodin1.class);
+                intent.putExtra("objeto", (Serializable) usu);
                 startActivity(intent);
             }
         });
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Comodin2.class);
+                intent.putExtra("objeto", (Serializable) usu);
                 startActivity(intent);
             }
         });
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Comodin3.class);
+                intent.putExtra("objeto", (Serializable) usu);
                 startActivity(intent);
             }
         });
@@ -90,38 +93,5 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if(getIntent().getExtras() != null){
-            String nombre = getIntent().getExtras().getString("nombre");
-            String email = getIntent().getExtras().getString("email");
-            String fecha = getIntent().getExtras().getString("fecha");
-            Boolean profesor = getIntent().getExtras().getBoolean("profesor");
-            String asignatura = getIntent().getExtras().getString("asignatura");
-            String genero = getIntent().getExtras().getString("genero");
-
-            if(nombre != null && email != null && fecha != null){
-                usuario.setNombre(nombre);
-                usuario.setEmail(email);
-                usuario.setFechaNac(fecha);
-            }
-
-            if(profesor != null){
-                usuario.setProfesor(profesor);
-            }
-
-            if(asignatura != null){
-                usuario.setAsignaturas(asignatura);
-            }
-
-            if(genero != null){
-                usuario.setGenero(genero);
-            }
-        }
-
     }
 }

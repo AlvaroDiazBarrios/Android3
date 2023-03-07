@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.example.practica3.entidades.Usuario;
+
+import java.io.Serializable;
+
 public class Comodin2 extends AppCompatActivity {
 
     Button btn1;
@@ -22,6 +26,9 @@ public class Comodin2 extends AppCompatActivity {
         ch1 = findViewById(R.id.ch1);
         ch2 = findViewById(R.id.ch2);
         ch3 = findViewById(R.id.ch3);
+        Usuario usu;
+        usu = (Usuario) getIntent().getSerializableExtra("objeto");
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +48,8 @@ public class Comodin2 extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(Comodin2.this, MainActivity.class);
-                intent.putExtra("asignatura", seleccion);
+                usu.setAsignaturas(seleccion);
+                intent.putExtra("objeto", (Serializable) usu);
                 startActivity(intent);
             }
         });
